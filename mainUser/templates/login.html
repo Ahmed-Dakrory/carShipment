@@ -1,0 +1,41 @@
+
+{%load static%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<script src="{% static 'js/login.js' %}"></script> 
+
+
+
+
+<div id="id01" class="modal-Login ">
+  
+    <form class="modal-content-Login animate-Login" action="/auth" method="post">
+        {% csrf_token %}
+      <div class="imgcontainer-Login">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close-Login" title="Close Modal">&times;</span>
+        <img src="/static/img/img_avatar2.png" alt="Avatar" class="avatar-Login">
+      </div>
+  
+      <div class="container-Login">
+        <label for="username"><b>Username</b></label>
+        <input type="text" class="input-Login" placeholder="Enter Username" name="username" required>
+  
+        <label for="password"><b>Password</b></label>
+        <input type="password" class="input-Login" placeholder="Enter Password" name="password" required>
+          
+        <button class="button-Login" type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+  
+      <div class="container-Login" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn-Login">Cancel</button>
+        <span class="psw-Login">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+  
+  
+
+

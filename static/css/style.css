@@ -1,0 +1,10 @@
+.h1Style{
+    font-size: 27px;
+    color: #e04242;
+  }
+
+.miniProfileImageCircle{
+    width: 45px;
+    height: 45px;
+    border-radius: 64px;
+}

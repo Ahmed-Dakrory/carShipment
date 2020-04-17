@@ -1,0 +1,112 @@
+<html>
+  <head>
+    {%load static%}
+
+    {% block head %}
+
+    {% endblock %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+
+
+  </head>
+
+  <body>
+
+    <!-- start of header-->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All Services
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          
+        </ul>
+
+        {% if not userdata.is_authenticated %}
+        <div class="form-inline my-2 my-lg-0">
+          <button id = "loginShowButton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+        </div>
+        {% else %}
+       
+      <div class="form-inline my-2 my-lg-0">
+        <form action="/logout" class="my-2 my-sm-0" method="post">
+          {% csrf_token %}
+          <ul class="navbar-nav mr-auto ">
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="loginButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src = "{{userProfile.image.url}}" class="miniProfileImageCircle"/>
+              </a>
+              <div class="dropdown-menu" style="left: -158%;" aria-labelledby="loginButton">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">My Vehicals</a>
+                <a class="dropdown-item" href="#">Ship a Vehicals</a>
+                <div class="dropdown-divider"></div>
+                <input type="submit" class="dropdown-item" value="Logout">
+              </div>
+            </li>
+            
+          </ul>
+      </form>
+      </div>
+        {% endif %}
+        
+      </div>
+    </nav>
+  </div>
+
+   <!-- end of header-->
+
+
+
+        {% block content %}
+        {% endblock %}
+
+    <p>Hello : {{user.username}}</p>
+    <p id="ptime">The current time is {{ current_date  }}</p>
+   
+
+
+
+   
+    {% include "login.html" %}
+
+
+
+
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+ 
+   </body>
+</html>
