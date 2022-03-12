@@ -1,7 +1,7 @@
 asgiref==3.2.7
 Django==3.0.5
 mysqlclient==1.4.6
-Pillow==7.1.1
+Pillow==9.0.1
 psycopg2==2.8.5
 PyMySQL==0.9.3
 pytz==2019.3
